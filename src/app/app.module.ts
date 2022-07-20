@@ -1,18 +1,42 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginComponent } from './component-login/login/login.component';
+import { UserComponent } from './component-user/user/user.component';
+import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
+import { NavegarComponent } from './navegacion/navegar/navegar.component';
+import { PeliculasformComponent } from './component-formPelis/peliculasform/peliculasform.component';
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    UserComponent,
+    NavegarComponent,
+    PeliculasformComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

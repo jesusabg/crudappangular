@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+app-navegar,.nav-login{
+    width: 99vw;
+    height: auto;
+    margin: 0 auto;
+}
+.nav-link{
+    font-size: 20px;
+}
+.navbar-brand,.title-nav{
+    font-size: 30px;
+}
+.title-nav{
+    color: #fff;
+    
+}
+.navbar,.card,.btn,.card-body{
+    border-radius: 10px;
+}
+
+.card-header{
+    border-radius: 10px 10px 0 0;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.249);
+}
+span{
+    color: rgb(219, 219, 219);
+    font-size: 18px;
+    display: block;
+    margin: 0  auto;
+    text-align: center;
+}
+.email-input{
+    outline: 50px;
+    outline-color: #fff;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+.button-login{
+    width: 40%;
+    margin: 0 auto;
+}
+.button-save{
+    width: 60%;
+    margin: 0 auto;
+}
+.form-pelis{
+    color: rgba(255, 255, 255, 0.685);
+}
+p{
+    font-size: 18px;
+}
+.button-edit{
+    font-size: 18px;
+    width: 80%;
+    margin: 0 auto;
+}

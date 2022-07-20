@@ -1,7 +1,36 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate,Route } from '@angular/router';
+import { PeliculasformComponent } from './component-formPelis/peliculasform/peliculasform.component';
+import { LoginComponent } from './component-login/login/login.component';
+import { UserComponent } from './component-user/user/user.component';
+import { UserGuardGuard } from './user-guard.guard';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path:'login/user',
+    component: UserComponent,
+    canActivate: [UserGuardGuard]
+  },
+  {
+    path: 'peliculas/add',
+    component:PeliculasformComponent,
+    canActivate:[UserGuardGuard]
+  },
+  {
+    path: 'peliculas/edit/:id',
+    component:PeliculasformComponent,
+    canActivate: [UserGuardGuard]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

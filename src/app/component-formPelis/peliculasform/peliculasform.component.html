@@ -1,0 +1,19 @@
+<app-navegar></app-navegar>
+<div class="col-md-8 offset-md-2">
+    <div class="card">
+        <div class="card-body card bg-dark p-5">
+            <h3 class="text-center pb-5 form-pelis">Formulario Peliculas</h3>
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" name="nombre" [(ngModel)]="movie.Titulo"  placeholder="Título" class="form-control form-control-lg email-input" autofocus autocomplete="off" minlength="3" required="true">
+                    <span *ngIf="movie.Titulo.length  <2 " class="validar">*Ingresa un nombre para el título</span>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="Puntuacion" [(ngModel)]="movie.Puntuacion" placeholder="Puntuación" class="form-control form-control-lg email-input" autocomplete="off" required="true" max="10" min="1">
+                    <span *ngIf="movie.Puntuacion <1 || movie.Puntuacion >10" class="validar">*La puntuación tiene que ser entre 1 y 10</span>
+                </div>
+                <button type="submit"  [disabled]="f.invalid"  class="btn btn-primary btn-lg btn-block button-save">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

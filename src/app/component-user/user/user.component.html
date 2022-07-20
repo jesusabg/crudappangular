@@ -1,0 +1,17 @@
+<app-navegar></app-navegar>
+<div class="col-md-4" *ngFor="let movie of movies">
+    <div class="card text-center mb-4" >
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <p>CARD PELICULA</p>
+            <button class="btn btn-md btn-danger" (click)="deleteMovie(movie.ID)" >
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <p>Nombre: {{movie.Titulo}}</p>
+            <p hidden>Id: {{movie.ID}}</p>
+            <p>Puntuacion: {{movie.Puntuacion}}</p>
+            <a [routerLink]="['/peliculas/edit',movie.ID]" class="btn btn-primary btn-block button-edit" >Editar Pelicula</a>
+        </div>
+    </div>
+</div>
