@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navegar',
@@ -13,7 +14,7 @@ export class NavegarComponent {
   removeCookie(){
     this.cookieService.delete('userAuth');
     localStorage.clear();
-    alert('Sesión finalizada te redirigiremos al login');
+    Swal.fire('Sesión finalizada');
     this.router.navigate(['/login'])
   }
 }

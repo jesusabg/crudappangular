@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TaskCorreo } from '../../interface/task';
 import { TaskService } from '../../services/task.service';
 import { Observable, Subscriber } from 'rxjs';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-form-pelis',
   templateUrl: './form-pelis.component.html',
@@ -28,11 +29,12 @@ export class FormPelisComponent  {
           let objetoAJson = JSON.stringify(response)
           console.log(objetoAJson);
           alert('Enviado de manera correcta');
+          Swal.fire('Correo enviado de manera correcta')
         },
         error: (error) => {
           console.log(error);
           this.correoCuerpo.filename = ``;
-          alert('Error en el envio, intenta de nuevo');
+          Swal.fire('Error en el envio, intenta de nuevo');
         },
       }
     );
@@ -69,7 +71,7 @@ export class FormPelisComponent  {
           const newStr = d.slice(37);
           this.correoCuerpo.fileb = newStr;
         }else{
-          alert('formato invalido');
+          Swal.fire('formato invalido');
           this.correoCuerpo.fileb = '';
         }
         console.log(this.correoCuerpo.filename);         

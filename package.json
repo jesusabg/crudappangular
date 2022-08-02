@@ -21,8 +21,10 @@
     "@angular/router": "~12.2.0",
     "@azure/msal-angular": "^2.3.3",
     "@azure/msal-browser": "^2.27.0",
+    "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "ngx-cookie-service": "^12.0.0",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.24",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
