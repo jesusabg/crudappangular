@@ -4,6 +4,8 @@ import { PeliculasformComponent } from './component-formPelis/peliculasform/peli
 import { LoginComponent } from './component-login/login/login.component';
 import { UserComponent } from './component-user/user/user.component';
 import { UserGuardGuard } from './user-guard.guard';
+import { FormPelisComponent } from './component-formCorreo/form-pelis/form-pelis.component';
+import { RutaErrorComponent } from './component-rutaError/ruta-error/ruta-error.component';
 
 const routes: Routes = [
   {
@@ -13,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path:'login/user',
@@ -29,6 +31,19 @@ const routes: Routes = [
     path: 'peliculas/edit/:id',
     component:PeliculasformComponent,
     canActivate: [UserGuardGuard]
+  },
+  {
+    path: 'peliculas/correo',
+    component:FormPelisComponent,
+    canActivate: [UserGuardGuard]
+  },
+  {
+    path: 'ruta/error',
+    component:RutaErrorComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'ruta/error'
   }
 ];
 

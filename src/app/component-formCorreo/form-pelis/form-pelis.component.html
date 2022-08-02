@@ -1,0 +1,31 @@
+<app-navegar></app-navegar>
+<div class="col-md-8 offset-md-2">
+    <div class="card">
+        <div class="card-body card bg-dark p-5">
+            <h3 class="text-center pb-2 form-pelis">Formulario Correo office 365</h3>
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" name="nombreArchivo" [(ngModel)]="correoCuerpo.filename"  placeholder="Nombre del archivo" class="form-control form-control-lg email-input invisible" autofocus autocomplete="off" minlength="3" required="true" style="display:none;">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombreAsunto" [(ngModel)]="correoCuerpo.subject"  placeholder="Nombre del asunto" class="form-control form-control-lg email-input" autofocus autocomplete="off" minlength="3" required="true">
+                    <span *ngIf="correoCuerpo.subject.length  <2 " class="validar">*Ingresa un nombre para el asunto</span>
+                </div>
+                <div class="form-group">
+                    <textarea name="nombreTexto" [(ngModel)]="correoCuerpo.text"  placeholder="texto" class="form-control form-control-lg email-input" autofocus autocomplete="off" minlength="3" required="true" cols="30" rows="10"></textarea>
+
+                    <span *ngIf="correoCuerpo.text.length  <2 " class="validar">*Ingresa el texto</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombreEmail" [(ngModel)]="correoCuerpo.toemails"  placeholder="Email" class="form-control form-control-lg email-input" autofocus autocomplete="off" minlength="3" required="true" >
+                </div>
+                <div class="form-group containerfiles">
+                    <input (change)="capturarFile($event)" type="file" class="btn form-control-lg">
+                </div>
+                
+                <button type="submit"  [disabled]="f.invalid"  class="btn btn-primary btn-lg btn-block button-save">Enviar</button>
+                
+            </form>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class PeliculasformComponent implements OnInit {
 
-  constructor(private TaskService: TaskService, private router: Router, private activedRoute:ActivatedRoute) { }
+  constructor(private taskService:TaskService , private router: Router, private activedRoute:ActivatedRoute) { }
   @HostBinding('class') classes = 'row';
 
   movie: TaskPelis = {
@@ -23,7 +23,7 @@ export class PeliculasformComponent implements OnInit {
 
     const params = this.activedRoute.snapshot.params;
     if (params['id']) {
-        this.TaskService.getTask(params['id'])
+        this.taskService.getTask(params['id'])
         .subscribe(
           {
             next: (response) => {
@@ -40,7 +40,7 @@ export class PeliculasformComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.edit == true){
+    if(this.edit){
       this.updateMovie();
     }else{
       this.saveMovie();
@@ -49,10 +49,12 @@ export class PeliculasformComponent implements OnInit {
   }
 
   updateMovie(){
-    this.TaskService.updateTask(this.movie)
+    this.taskService.updateTask(this.movie)
     .subscribe(
       {
         next: (response) => {
+          console.log(response);
+          
           this.router.navigate(['/login/user']);
         },
         error: (error) => {
@@ -63,7 +65,7 @@ export class PeliculasformComponent implements OnInit {
   }
 
   saveMovie() {
-    this.TaskService.createTaskFormPelis(this.movie).subscribe(
+    this.taskService.createTaskFormPelis(this.movie).subscribe(
       {
         next: (response) => {
           this.router.navigate(['/login/user']);

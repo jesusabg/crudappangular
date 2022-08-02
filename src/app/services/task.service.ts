@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task, TaskPelis } from '../interface/task';
+import { Task, TaskPelis, TaskCorreo } from '../interface/task';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   private api = 'https://api-python-jwt.azurewebsites.net/api/Gettoken';
   private apiPelis = 'https://try2asd.azurewebsites.net';
+  private apiCorreo = 'https://send-mails.azurewebsites.net/api/SendMail';
   constructor(private http:HttpClient) { }
 
   createTask(task: Task) {
@@ -14,6 +16,12 @@ export class TaskService {
     return this.http.post(path, task);
   }
 
+  createTaskCorreo(_TaskCorreo:TaskCorreo){
+    const path = this.apiCorreo;
+    return this.http.post(path, _TaskCorreo);
+  }
+
+  
   getAllTasks() {
     const path = `${this.apiPelis}/api/peliculas`;
     return this.http.get<TaskPelis[]>(path);

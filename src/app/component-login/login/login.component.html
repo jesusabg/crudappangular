@@ -2,29 +2,36 @@
     <div class="container-fluid title-nav">
         CRUD LOGIN
     </div>
-  </nav>
+</nav>
 <div class="col-md-10 offset-md-1 mt-5 container-login">
     <div class="card">
         <div class="card-body card bg-dark text-white">
-            <h3 class="mb-5 text-center">Sign in <i class="fa-solid fa-face-laugh-wink"></i> </h3>
+            <h3 class="mb-5 text-center">Sign in <em class="fa-solid fa-face-laugh-wink"></em> </h3>
             <p class="text-white-50 mb-5 text-center">Please enter your Email and password!</p>
             <form #f="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group ">
-                    <input type="email" name="usuario" [(ngModel)]="user.usuario"  placeholder="Email" class="form-control form-control-lg  email-input" autofocus autocomplete="off" minlength="3" ng-required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel #emailref="ngModel"/>
+                    <input type="email" name="usuario" [(ngModel)]="user.usuario" placeholder="Email"
+                        class="form-control form-control-lg  email-input" autofocus autocomplete="off" minlength="3"
+                        required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel
+                        #emailref="ngModel" />
                     <span [hidden]="!emailref.errors?.pattern"> Ingresa un formato de email valido</span>
                 </div>
                 <div class="form-group mb-5">
-                    <input type="password" name="password" [(ngModel)]="user.password" placeholder="Password" class="form-control form-control-lg mb-4 email-input" autocomplete="off" required="true" >
-                    <span *ngIf="datosIncorrectos != false" >Email o contraseña incorrectos</span>
+                    <input type="password" name="password" [(ngModel)]="user.password" placeholder="Password"
+                        class="form-control form-control-lg mb-4 email-input" autocomplete="off" required="true">
+                    <span *ngIf="datosIncorrectos != false">Email o contraseña incorrectos</span>
                 </div>
-                <button type="submit" [disabled]="f.invalid"  class="btn btn-light btn-lg btn-block mb-3 button-login"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-                <!-- <p class="text-center">or sign up with:</p>
-                <button class="btn btn-lg btn-block btn-info" type="submit" disabled="true"><i class="fab fa-microsoft me-2" ></i> Sign in with microsoft</button> -->
+                <button type="submit" [disabled]="f.invalid"
+                    class="btn btn-light btn-lg btn-block mb-3 button-login"><em class="fas fa-sign-in-alt"></em> Sign
+                    in</button>
+
+                <div *ngIf="spinnerFlag" style="width: 100% ; display: flex; justify-content: center;">
+                    <img src="../../../assets/loading-gif.gif" alt="spinner carga" width="50px">
+                </div>
+                <div *ngIf="banderaResputaCero" style="width: 100% ; display: flex; justify-content: center;">
+                    <p>El servicio no esta disponible, Intenta mas tarde</p>
+                </div>
             </form>
         </div>
     </div>
-  </div>
-
-  
-
-  
+</div>

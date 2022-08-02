@@ -11,6 +11,8 @@ import { UserComponent } from './component-user/user/user.component';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
 import { NavegarComponent } from './navegacion/navegar/navegar.component';
 import { PeliculasformComponent } from './component-formPelis/peliculasform/peliculasform.component';
+import { FormPelisComponent } from './component-formCorreo/form-pelis/form-pelis.component';
+import { RutaErrorComponent } from './component-rutaError/ruta-error/ruta-error.component';
 
 
 
@@ -21,7 +23,9 @@ import { PeliculasformComponent } from './component-formPelis/peliculasform/peli
     LoginComponent,
     UserComponent,
     NavegarComponent,
-    PeliculasformComponent
+    PeliculasformComponent,
+    FormPelisComponent,
+    RutaErrorComponent
   ],
   imports: [
     BrowserModule,
