@@ -4,24 +4,29 @@ import { Task } from '../../interface/task';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { flagSpinner2 as spinnerFlagInterceptor, respuestaErrorCero } from 'src/app/jwt-interceptor.interceptor';
-
+import { AppInsightsService } from 'src/app/services/app-insights.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
 
-  constructor(private taskService:TaskService,private cookieService: CookieService, private router: Router) { }
+  constructor(private taskService: TaskService,
+    private cookieService: CookieService,
+    private router: Router,
+    private appInsightsService: AppInsightsService) {
+      appInsightsService.logPageView('MainPage');
+  }
 
-  
+
   @HostBinding('class') classes = 'row'
-  user:Task ={
+  user: Task = {
     usuario: '',
     password: ''
   };
-  datosIncorrectos:boolean = false;
-  spinnerFlag:boolean = false;
-  banderaResputaCero:boolean = false;
+  datosIncorrectos: boolean = false;
+  spinnerFlag: boolean = false;
+  banderaResputaCero: boolean = false;
 
   onSubmit() {
     this.banderaResputaCero = false;
@@ -33,9 +38,9 @@ export class LoginComponent {
         next: (response) => {
           let objetoAJson = JSON.stringify(response);
           let JsonAObjeto = JSON.parse(objetoAJson);
-          this.cookieService.set('userAuth', JsonAObjeto.access_token, 0.0104167 );
-          this.router.navigate(['login/user'])      
-           
+          this.cookieService.set('userAuth', JsonAObjeto.access_token, 0.0104167);
+          this.router.navigate(['login/user'])
+
         },
         error: (error) => {
           this.user.password = '';
@@ -43,17 +48,17 @@ export class LoginComponent {
           if (error.status == 0) {
             this.banderaResputaCero = respuestaErrorCero;
             this.spinnerFlag = spinnerFlagInterceptor;
-          }else if (error.status == 400) {
+          } else if (error.status == 400) {
             this.datosIncorrectos = true;
             this.spinnerFlag = false;
-          }else if(error.status == 500){
+          } else if (error.status == 500) {
             this.datosIncorrectos = true;
           }
           this.spinnerFlag = false
         },
-        
+
       }
-     
+
     );
   }
 

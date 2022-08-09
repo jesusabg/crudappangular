@@ -13,7 +13,7 @@ import { NavegarComponent } from './navegacion/navegar/navegar.component';
 import { PeliculasformComponent } from './component-formPelis/peliculasform/peliculasform.component';
 import { FormPelisComponent } from './component-formCorreo/form-pelis/form-pelis.component';
 import { RutaErrorComponent } from './component-rutaError/ruta-error/ruta-error.component';
-
+import { AppInsightsService } from './services/app-insights.service';
 
 
 
@@ -39,7 +39,8 @@ import { RutaErrorComponent } from './component-rutaError/ruta-error/ruta-error.
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorInterceptor,
       multi: true,
-    }
+    },
+    AppInsightsService
   ],
   bootstrap: [AppComponent]
 })
