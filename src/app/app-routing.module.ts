@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate,Route } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PeliculasformComponent } from './component-formPelis/peliculasform/peliculasform.component';
 import { LoginComponent } from './component-login/login/login.component';
 import { UserComponent } from './component-user/user/user.component';

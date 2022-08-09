@@ -28,7 +28,6 @@ export class FormPelisComponent  {
         next: (response) => {
           let objetoAJson = JSON.stringify(response)
           console.log(objetoAJson);
-          alert('Enviado de manera correcta');
           Swal.fire('Correo enviado de manera correcta')
         },
         error: (error) => {

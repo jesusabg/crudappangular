@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 export class UserGuardGuard implements CanActivate {
   constructor (private cookieSerive:CookieService, private router:Router) {}
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    _route: ActivatedRouteSnapshot,
+    _state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const cookie = this.cookieSerive.check('userAuth')
     if (!cookie) {
       Swal.fire('Sesión expirada');

@@ -6,9 +6,9 @@ import { Task, TaskPelis, TaskCorreo } from '../interface/task';
   providedIn: 'root'
 })
 export class TaskService {
-  private api = 'https://api-python-jwt.azurewebsites.net/api/Gettoken';
-  private apiPelis = 'https://try2asd.azurewebsites.net';
-  private apiCorreo = 'https://servicebusfunct.azurewebsites.net/api/ServiceBus';
+  private api = 'https://getjwt1.azurewebsites.net/api/gettoken';
+  private apiPelis = 'https://crudpeliculas.azurewebsites.net';
+  private apiCorreo = 'https://functosb.azurewebsites.net/api/ServiceBus';
   constructor(private http:HttpClient) { }
 
   createTask(task: Task) {
